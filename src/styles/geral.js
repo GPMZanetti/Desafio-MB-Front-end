@@ -24,7 +24,8 @@ export default StyleSheet.create({
         backgroundColor: '#F2F2F2',
         height: 40,
         width: 230,
-        margin: 10,
+        marginHorizontal: 10,
+        marginBottom: 20,
         padding: 10,
         borderWidth: 1,
         borderColor: '#41058D',
@@ -44,5 +45,18 @@ export default StyleSheet.create({
     },
     botões: {
         margin: 20,
+    },
+    texto: {
+        color: 'gray'
+    },
+    textoAviso: {
+        color: 'red',
+        textAlign: 'center',
+    },
+    textoEsquerda: {
+        color: 'black',
+        textAlign: 'left',
+        alignSelf: 'flex-start',
+        marginLeft: 70,
     },
 });
