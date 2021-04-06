@@ -1,16 +1,19 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { getItemAsync, setItemAsync, deleteItemAsync } from 'expo-secure-store';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 import IniciarSessão from './pages/iniciarSessao';
 import CadastrarConta from './pages/cadastrarConta';
 import Carregando from './pages/carregando';
 import Início from './pages/inicio';
+import Eventos from './pages/eventos';
+import Ingressos from './pages/ingressos';
+import Configurações from './pages/configurações';
 import ContextoDeAutenticação from './context';
 import requisição from './functions/requisição';
-
-const Pilha = createStackNavigator();
 
 export default function App() {
   const [estado, despachar] = React.useReducer(
@@ -93,6 +96,45 @@ export default function App() {
     []
   );
 
+  const Aba = createBottomTabNavigator();
+
+  function Abas() {
+    return (
+      <Aba.Navigator
+        screenOptions={({ route }) => ({
+          tabBarIcon: ({ focused, color, size }) => {
+            let nomeDoÍcone;
+
+            if (route.name === 'Início') {
+              nomeDoÍcone = focused ? 'home' : 'home-outline';
+            }
+            else if (route.name === 'Eventos') {
+              nomeDoÍcone = focused ? 'calendar' : 'calendar-outline';
+            }
+            else if (route.name === 'Ingressos') {
+              nomeDoÍcone = focused ? 'ticket' : 'ticket-outline';
+            }
+            else if (route.name === 'Configurações') {
+              nomeDoÍcone = focused ? 'account' : 'account-outline';
+            }
+
+            return <MaterialCommunityIcons name={nomeDoÍcone} size={size} color={color} />;
+          },
+        })}
+        tabBarOptions={{
+          activeTintColor: '#7100CA',
+          inactiveTintColor: 'gray',
+        }}>
+        <Aba.Screen name="Início" component={Início} />
+        <Aba.Screen name="Eventos" component={Eventos} />
+        <Aba.Screen name="Ingressos" component={Ingressos} />
+        <Aba.Screen name="Configurações" component={Configurações} />
+      </Aba.Navigator>
+    );
+  }
+
+  const Pilha = createStackNavigator();
+
   return (
     <ContextoDeAutenticação.Provider value={contextoDeAutenticação}>
       <NavigationContainer>
@@ -112,7 +154,7 @@ export default function App() {
               <Pilha.Screen name="Cadastrar conta" component={CadastrarConta} />
             </>
           ) : (
-            <Pilha.Screen name="Início" component={Início} />
+            <Pilha.Screen name="Abas" component={Abas} />
           )}
         </Pilha.Navigator>
       </NavigationContainer>

@@ -3,7 +3,7 @@ import { Button, StatusBar, Text, TouchableOpacity, View } from 'react-native';
 import ContextoDeAutenticação from '../../context';
 import estilos from '../../styles/geral';
 
-export default function Início() {
+export default function Ingressos() {
     const { sair } = React.useContext(ContextoDeAutenticação);
 
     return (

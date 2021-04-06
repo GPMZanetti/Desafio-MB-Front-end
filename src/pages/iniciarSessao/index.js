@@ -32,7 +32,6 @@ export default function IniciarSessão({ navigation }) {
             <View style={estilos.botões}>
                 <TouchableOpacity style={estilos.botão} onPress={async () => {
                     res = await entrar({ email, senha });
-                    console.log(res);
                     if (res.situação === "Erro") {
                         setMensagem(res.dados);
                     }

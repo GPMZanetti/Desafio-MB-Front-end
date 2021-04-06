@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Front-end",
-    "slug": "Front-end",
+    "name": "Gestão de eventos",
+    "slug": "Gestao-de-eventos",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
