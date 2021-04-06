@@ -154,7 +154,7 @@ export default function App() {
               <Pilha.Screen name="Cadastrar conta" component={CadastrarConta} />
             </>
           ) : (
-            <Pilha.Screen name="Abas" component={Abas} />
+            <Pilha.Screen name="Gestão de Eventos" component={Abas} />
           )}
         </Pilha.Navigator>
       </NavigationContainer>

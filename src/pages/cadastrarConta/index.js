@@ -29,8 +29,8 @@ export default function CadastrarConta({ navigation }) {
         }
         
         requisição.post('cadastrarConta', 'nome=' + nome
-            + '&dataDeNascimento=' + (dataDeNascimento.getMonth() + '/' 
-            + dataDeNascimento.getDate() + '/' 
+            + '&dataDeNascimento=' + ((dataDeNascimento.getMonth() + 1) + '/' 
+            + (dataDeNascimento.getDate() + 1) + '/' 
             + dataDeNascimento.getFullYear()) 
             + '&email=' + email 
             + '&senha=' + senha).then((res) => {
